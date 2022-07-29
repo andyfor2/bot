@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  python:
+      build:
+        context: ./python
+      volumes:
+        - ..:/app
+      command: sleep infinity
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
